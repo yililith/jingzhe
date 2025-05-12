@@ -1,5 +1,5 @@
 import index from '@/layout/index.vue'
-
+import login from '@/views/login/index.vue'
 export const initRouter = () => {
   return [
     {
@@ -9,5 +9,10 @@ export const initRouter = () => {
       // redirect: '',
       children: []
     },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
+    }
   ]
 }

@@ -1,13 +1,14 @@
 <script setup lang="ts">
 
 import Layout_breadcrumb from '@/layout/components/layout_breadcrumb.vue'
+import Layout_sider from '@/layout/components/layout_sider.vue'
 </script>
 
 <template>
   <a-layout>
 <!--    侧边-->
     <a-layout-sider class="layout-sider">
-
+      <layout_sider></layout_sider>
     </a-layout-sider>
     <a-layout>
 <!--      header-->
