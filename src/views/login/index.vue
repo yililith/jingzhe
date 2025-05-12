@@ -3,40 +3,96 @@
 </script>
 
 <template>
-  <div class="login-body">
-    <a-row>
-      <a-col class="login-body-left" :span="16">
-
-      </a-col>
-      <a-col class="login-body-right" :span="8">
-        <div class="login-body-right-div">
-           <a-card>
-
-           </a-card>
-        </div>
-      </a-col>
-    </a-row>
+  <div class="container">
+    <div class="login-wrapper">
+      <div class="header">Login</div>
+      <div class="form-wrapper">
+        <a-form
+          layout="vertical"
+        >
+          <a-form-item>
+            <input type="text" name="username" placeholder="username" class="input-item">
+          </a-form-item>
+          <a-form-item>
+            <input type="password" name="password" placeholder="password" class="input-item">
+          </a-form-item>
+        </a-form>
+        <div id="login" class="btn">Login</div>
+      </div>
+      <div class="msg">
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.login-body {
-  height: 100vh;
+.container {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans Light';
+  letter-spacing: .05em;
   width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
 }
 
-.login-body-left {
-  height: 100vh;
+.login-wrapper {
+  background-color: #fff;
+  width: 250px;
+  height: 500px;
+  padding: 0 50px;
+  position: relative;
+  left: 50%;
+  border-radius: 15px;
+  top:50%;
+  transform: translate(-50%,-50%);
+}
+.login-wrapper .header {
+  font-size:  30px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 200px;
 }
 
-.login-body-right {
-  height: 100vh;
-}
-.login-body-right-div {
-  display: flex;
-  height: 100%;
+.login-wrapper .form-wrapper .input-item {
+  display: block;
   width: 100%;
+  margin-bottom: 20px;
+  border: none;
+  padding: 10px;
+  border-bottom: 2px solid rgb(128,125,125);
+  font-size: 15px;
+  outline: none;
+}
+
+.login-wrapper .form-wrapper .input-item::placeholder {
+  text-transform: uppercase;
+}
+
+.login-wrapper .form-wrapper .btn {
+  text-align: center;
+  padding: 5px;
+  margin-top: 40px;
+  background-image: linear-gradient(to right,#fbc2eb,#a6c1ee);;
+  color: #fff;
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+  border-radius: 15px;
+  height:  30px;
+}
+
+.login-wrapper  .msg {
+  text-align: center;
+  line-height: 80px;
+}
+
+.login-wrapper  .msg a  {
+  text-decoration-line:  none;
+  color: #a6c1ee;
 }
 </style>
