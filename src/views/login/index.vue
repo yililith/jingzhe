@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import login_svg from  '@/assets/login_page.svg'
 // 登录表单相关
-import { FormInstance } from '@arco-design/web-vue'
+import { FormInstance, Message } from '@arco-design/web-vue'
 import { ref } from 'vue'
+import { isMobile } from '@/utils'
 
 import {
   IconUser,
@@ -15,7 +16,9 @@ const rules: FormInstance['rules'] = {
   username: [{ required: true, message: '请输入账号' }],
   password: [
     { required: true, message: '请输入密码' },
-    { match: '/^\\d{6}$/', message: '输入密码格式不正确' }
+    { min: 6, message: '密码最短6位' },
+    { max: 16, message: '密码最长16位' },
+    { match: /^[a-zA-Z0-9.]+$/, message: '输入密码格式不正确' }
   ]
 }
 // 表单数据
@@ -23,6 +26,23 @@ const formData = ref({
   username: '',
   password: '',
 })
+
+// 登录事件
+const loginBtn = () => {
+  loginFormRef.value.validate().then(() => {
+    if ( formData.value.username === 'admin' && formData.value.password === '123456' ) {
+      console.log('登录成功')
+      Message.success('登录成功')
+    } else {
+      Message.error('登录失败')
+    }
+  }).finally(() => {
+    formData.value = {
+      username: '',
+      password: '',
+    }
+  })
+}
 </script>
 
 <template>
@@ -35,20 +55,31 @@ const formData = ref({
       </a-col>
       <a-col :xs="24" :sm="12" :md="9">
         <div class="login-right">
-          <a-form :ref="loginFormRef" :rules="rules" layout="inline">
+          <a-form
+            ref="loginFormRef"
+            :size="isMobile() ? 'large' : 'medium'"
+            :model="formData"
+            :rules="rules"
+            :style="{ width: '84%' }"
+            :label-col-style="{ display: 'none' }"
+            :wrapper-col-style="{ flex: 1 }"
+          >
             <a-form-item field="username">
-              <a-input v-model="formData.username" placeholder="请输入用户名">
+              <a-input v-model="formData.username" placeholder="请输入用户名" allow-clear>
                 <template #prefix>
-                  <icon-user />
+                  <icon-user :stroke-width="1" :style="{ fontSize: '20px' }" />
                 </template>
               </a-input>
             </a-form-item>
             <a-form-item field="password">
-              <a-input v-model="formData.password" placeholder="请输入密码">
+              <a-input-password v-model="formData.password" placeholder="请输入密码" allow-clear>
                 <template #prefix>
-                  <icon-lock />
+                  <icon-lock :stroke-width="1" :style="{ fontSize: '20px' }" />
                 </template>
-              </a-input>
+              </a-input-password>
+            </a-form-item>
+            <a-form-item>
+              <a-button type="primary" size="large" long @click="loginBtn">登录</a-button>
             </a-form-item>
           </a-form>
         </div>
@@ -64,15 +95,15 @@ const formData = ref({
   width: 100vw;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(to right,#fbc2eb,#a6c1ee);
+  background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
   overflow: hidden;
+  z-index: -1;
   &-box {
     width: 86%;
     max-width: 720px;
     height: 380px;
     display: flex;
-    z-index: 999;
-    background-color: #fff;
+    background-color: rgb(251, 251, 251);
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.08);
   }
 }
@@ -89,5 +120,7 @@ const formData = ref({
   width: 100%;
   justify-content: center;
   align-items: center;
+  padding-top: 30px;
+  box-sizing: border-box;
 }
 </style>
