@@ -4,6 +4,11 @@ import login_svg from  '@/assets/login_page.svg'
 import { FormInstance } from '@arco-design/web-vue'
 import { ref } from 'vue'
 
+import {
+  IconUser,
+  IconLock,
+} from '@arco-design/web-vue/es/icon'
+
 const loginFormRef = ref()
 // 表单规则
 const rules: FormInstance['rules'] = {
@@ -13,6 +18,11 @@ const rules: FormInstance['rules'] = {
     { match: '/^\\d{6}$/', message: '输入密码格式不正确' }
   ]
 }
+// 表单数据
+const formData = ref({
+  username: '',
+  password: '',
+})
 </script>
 
 <template>
@@ -25,8 +35,21 @@ const rules: FormInstance['rules'] = {
       </a-col>
       <a-col :xs="24" :sm="12" :md="9">
         <div class="login-right">
-          <a-form :ref="loginFormRef" :rules="rules">
-
+          <a-form :ref="loginFormRef" :rules="rules" layout="inline">
+            <a-form-item field="username">
+              <a-input v-model="formData.username" placeholder="请输入用户名">
+                <template #prefix>
+                  <icon-user />
+                </template>
+              </a-input>
+            </a-form-item>
+            <a-form-item field="password">
+              <a-input v-model="formData.password" placeholder="请输入密码">
+                <template #prefix>
+                  <icon-lock />
+                </template>
+              </a-input>
+            </a-form-item>
           </a-form>
         </div>
       </a-col>
