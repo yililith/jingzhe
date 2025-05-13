@@ -1,98 +1,70 @@
 <script setup lang="ts">
+import login_svg from  '@/assets/login_page.svg'
+// 登录表单相关
+import { FormInstance } from '@arco-design/web-vue'
+import { ref } from 'vue'
 
+const loginFormRef = ref()
+// 表单规则
+const rules: FormInstance['rules'] = {
+  username: [{ required: true, message: '请输入账号' }],
+  password: [
+    { required: true, message: '请输入密码' },
+    { match: '/^\\d{6}$/', message: '输入密码格式不正确' }
+  ]
+}
 </script>
 
 <template>
-  <div class="container">
-    <div class="login-wrapper">
-      <div class="header">Login</div>
-      <div class="form-wrapper">
-        <a-form
-          layout="vertical"
-        >
-          <a-form-item>
-            <input type="text" name="username" placeholder="username" class="input-item">
-          </a-form-item>
-          <a-form-item>
-            <input type="password" name="password" placeholder="password" class="input-item">
-          </a-form-item>
-        </a-form>
-        <div id="login" class="btn">Login</div>
-      </div>
-      <div class="msg">
-      </div>
-    </div>
+  <div class="login">
+    <a-row align="stretch" class="login-box">
+      <a-col :xs="0" :sm="12" :md="15">
+        <div class="login-left">
+          <a-image width="380px" height="380px" fit="contain" :src="login_svg"></a-image>
+        </div>
+      </a-col>
+      <a-col :xs="24" :sm="12" :md="9">
+        <div class="login-right">
+          <a-form :ref="loginFormRef" :rules="rules">
+
+          </a-form>
+        </div>
+      </a-col>
+    </a-row>
   </div>
 </template>
 
-<style scoped>
-.container {
-  padding: 0;
-  margin: 0;
-  font-family: 'Open Sans Light';
-  letter-spacing: .05em;
-  width: 100vw;
-  height: 100vh;
-  background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
-}
-
-.login-wrapper {
-  background-color: #fff;
-  width: 250px;
-  height: 500px;
-  padding: 0 50px;
-  position: relative;
-  left: 50%;
-  border-radius: 15px;
-  top:50%;
-  transform: translate(-50%,-50%);
-}
-.login-wrapper .header {
-  font-size:  30px;
-  font-weight: bold;
-  text-align: center;
-  line-height: 200px;
-}
-
-.login-wrapper .form-wrapper .input-item {
-  display: block;
-  width: 100%;
-  margin-bottom: 20px;
-  border: none;
-  padding: 10px;
-  border-bottom: 2px solid rgb(128,125,125);
-  font-size: 15px;
-  outline: none;
-}
-
-.login-wrapper .form-wrapper .input-item::placeholder {
-  text-transform: uppercase;
-}
-
-.login-wrapper .form-wrapper .btn {
-  text-align: center;
-  padding: 5px;
-  margin-top: 40px;
-  background-image: linear-gradient(to right,#fbc2eb,#a6c1ee);;
-  color: #fff;
-}
-
-.btn {
+<style lang="scss" scoped>
+.login {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  height: 100vh;
+  width: 100vw;
   justify-content: center;
-  border-radius: 15px;
-  height:  30px;
+  align-items: center;
+  background-image: linear-gradient(to right,#fbc2eb,#a6c1ee);
+  overflow: hidden;
+  &-box {
+    width: 86%;
+    max-width: 720px;
+    height: 380px;
+    display: flex;
+    z-index: 999;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.08);
+  }
 }
-
-.login-wrapper  .msg {
-  text-align: center;
-  line-height: 80px;
+.login-left {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
-
-.login-wrapper  .msg a  {
-  text-decoration-line:  none;
-  color: #a6c1ee;
+.login-right {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 </style>
