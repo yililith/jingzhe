@@ -7,7 +7,10 @@ import Layout_sider from '@/layout/components/layout_sider.vue'
 <template>
   <a-layout>
 <!--    侧边-->
-    <a-layout-sider class="layout-sider">
+    <a-layout-sider
+      class="layout-sider"
+      :breakpoint="'sm'"
+    >
       <layout_sider></layout_sider>
     </a-layout-sider>
     <a-layout>
@@ -30,7 +33,6 @@ import Layout_sider from '@/layout/components/layout_sider.vue'
 <style scoped>
 .layout-sider {
   height: 100vh;
-  width: 200px;
   margin-right: 16px;
 }
 .layout-header {

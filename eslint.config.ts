@@ -15,7 +15,15 @@ export default defineConfigWithVueTs(
     rules: {
       'vue/multi-word-component-names': ['error', {
         ignores: ['index'] // 允许特定的单单词组件名
-      }]
+      }],
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+        },
+      ],
     }
   },
 

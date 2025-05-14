@@ -4,8 +4,12 @@ import type { VNode } from 'vue'
 export interface MenuModel {
   name: string
   path: string
-  icon: VNode
+  icon?: VNode
   children?: MenuModel[]
 }
 
-
+export interface acceptMenuModel {
+  name: string
+  type: string
+  level: string
+}

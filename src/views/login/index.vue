@@ -3,12 +3,22 @@ import login_svg from  '@/assets/login_page.svg'
 // 登录表单相关
 import { FormInstance, Message } from '@arco-design/web-vue'
 import { ref } from 'vue'
-import { isMobile } from '@/utils'
+import { isMobile, setMenus } from '@/utils'
 
 import {
   IconUser,
   IconLock,
 } from '@arco-design/web-vue/es/icon'
+import { useRouter } from "vue-router";
+import { storeToken } from "@/stores/store_token.ts";
+import type { acceptMenuModel } from '@/model/model_menu.ts'
+import { storeMenu } from '@/stores/store_menu.ts'
+// 路由控制器
+const router = useRouter()
+
+// pinia缓存
+const tokenStore = storeToken()
+const menuStore = storeMenu()
 
 const loginFormRef = ref()
 // 表单规则
@@ -32,8 +42,21 @@ const loginBtn = () => {
   loginFormRef.value.validate().then(() => {
     if ( formData.value.username === 'admin' && formData.value.password === '123456' ) {
       console.log('登录成功')
-      Message.success('登录成功')
+      // 此处可修改为真正的登录组件
+      tokenStore.setToken('test token')
+      const menus: acceptMenuModel[] = [
+        {
+          name: 'dashboard',
+          level: 'one',
+          type: 'dashboard',
+        }
+      ]
+
+      menuStore.addMenu(menus)
+
+      router.push('/')
     } else {
+      console.log('登录失败')
       Message.error('登录失败')
     }
   }).finally(() => {
@@ -96,8 +119,6 @@ const loginBtn = () => {
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
-  overflow: hidden;
-  z-index: -1;
   &-box {
     width: 86%;
     max-width: 720px;

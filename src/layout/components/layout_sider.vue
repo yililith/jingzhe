@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import Logo from '@/assets/logo.svg'
-import { useRouter } from 'vue-router'
 import { ref } from 'vue'
-const router = useRouter()
+import { storeMenu } from '@/stores/store_menu'
+import { setMenus } from '@/utils'
 
+
+// 菜单生成
+const menuStore = storeMenu()
 // 这个是从后端返回的，这里模拟一下
-const menuNameList = ref<string[]>(["dashboard"])
+const menuNameList = setMenus(menuStore.menuList)
 
 
 
@@ -21,11 +24,13 @@ const menuNameList = ref<string[]>(["dashboard"])
     <a-menu
       :accordion="true"
     >
-      <template v-for="item in router.getRoutes()" :key="item.name">
+      <template v-for="item in menuNameList" :key="item.name">
         <a-sub-menu v-if="item.children">
 
         </a-sub-menu>
-        <a-menu-item v-else></a-menu-item>
+        <a-menu-item v-else>
+
+        </a-menu-item>
       </template>
     </a-menu>
   </div>
