@@ -1,40 +1,38 @@
 <script setup lang="ts">
 import Logo from '@/assets/logo.svg'
-import { ref } from 'vue'
 import { storeMenu } from '@/stores/store_menu'
 import { setMenus } from '@/utils'
 
-
 // 菜单生成
 const menuStore = storeMenu()
-// 这个是从后端返回的，这里模拟一下
+//
 const menuNameList = setMenus(menuStore.menuList)
-
-
-
 </script>
 
 <template>
   <div>
     <div class="sider-header">
-      <a-avatar size="64" shape="square" style="background-color: transparent" >
-        <img :src="Logo">
+      <a-avatar :size="64" shape="square" style="background-color: transparent">
+        <img :src="Logo" />
       </a-avatar>
     </div>
-    <a-menu
-      :accordion="true"
-    >
+    <!--  菜单组件  -->
+    <a-menu :accordion="true">
       <template v-for="item in menuNameList" :key="item.name">
         <a-sub-menu v-if="item.children">
-
+          <template #icon><component :is="item.icon"></component></template>
+          <template #title>{{ item.name }}</template>
+          <a-menu-item v-for="child in item.children" :key="child.name">
+            {{ child.name }}
+          </a-menu-item>
         </a-sub-menu>
         <a-menu-item v-else>
-
+          <template #icon><component :is="item.icon"></component></template>
+          {{ item.name }}
         </a-menu-item>
       </template>
     </a-menu>
   </div>
-
 </template>
 
 <style scoped>

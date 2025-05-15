@@ -28,6 +28,8 @@ router.beforeEach((to, from, next) => {
         routerMap.forEach((item: RouterModel, _: string) => {
           router.addRoute('home', item as RouteRecordRaw)
         })
+        routerStore.changeIsAddRouter(true)
+        next('/')
         return
       }
     }
