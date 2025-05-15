@@ -3,7 +3,7 @@ import login_svg from  '@/assets/login_page.svg'
 // 登录表单相关
 import { FormInstance, Message } from '@arco-design/web-vue'
 import { ref } from 'vue'
-import { isMobile, setMenus } from '@/utils'
+import { isMobile } from '@/utils'
 
 import {
   IconUser,
@@ -13,6 +13,7 @@ import { useRouter } from "vue-router";
 import { storeToken } from "@/stores/store_token.ts";
 import type { acceptMenuModel } from '@/model/model_menu.ts'
 import { storeMenu } from '@/stores/store_menu.ts'
+
 // 路由控制器
 const router = useRouter()
 
@@ -41,7 +42,6 @@ const formData = ref({
 const loginBtn = () => {
   loginFormRef.value.validate().then(() => {
     if ( formData.value.username === 'admin' && formData.value.password === '123456' ) {
-      console.log('登录成功')
       // 此处可修改为真正的登录组件
       tokenStore.setToken('test token')
       const menus: acceptMenuModel[] = [
@@ -53,10 +53,9 @@ const loginBtn = () => {
       ]
 
       menuStore.addMenu(menus)
-
+      Message.success('登录成功')
       router.push('/')
     } else {
-      console.log('登录失败')
       Message.error('登录失败')
     }
   }).finally(() => {
@@ -66,6 +65,7 @@ const loginBtn = () => {
     }
   })
 }
+
 </script>
 
 <template>
