@@ -18,4 +18,6 @@ export const storeMenu = defineStore('menu', () => {
     addMenu,
     removeMenu
   }
+},{
+  persist: true,
 })

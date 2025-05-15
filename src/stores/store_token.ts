@@ -18,4 +18,6 @@ export const storeToken = defineStore("token", () => {
     setToken,
     removeToken
   }
+},{
+  persist: true,
 })

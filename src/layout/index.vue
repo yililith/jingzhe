@@ -24,7 +24,7 @@ import Layout_sider from '@/layout/components/layout_sider.vue'
       </layout_breadcrumb>
 <!--      content-->
       <a-layout-content>
-        <router-view />
+        <RouterView />
       </a-layout-content>
     </a-layout>
   </a-layout>
@@ -37,5 +37,6 @@ import Layout_sider from '@/layout/components/layout_sider.vue'
 }
 .layout-header {
   height: 64px;
+  border-bottom: rgb(229, 230, 235) 1px solid;
 }
 </style>

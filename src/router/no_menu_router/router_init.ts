@@ -6,7 +6,7 @@ export const initRouter = () => {
       path: '/',
       name: 'home',
       component: index,
-      // redirect: '',
+      redirect: '/dashboard',
       children: []
     },
     {

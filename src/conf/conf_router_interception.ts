@@ -22,7 +22,6 @@ router.beforeEach((to, from, next) => {
         next()
         return
       } else {
-
         const routerMap = menuToRouter(menuStore.menuList)
 
         routerMap.forEach((item: RouterModel, _: string) => {
@@ -51,9 +50,9 @@ const menuToRouter = (menus: acceptMenuModel[]): Map<string, RouterModel> => {
   menus.forEach((item: acceptMenuModel) => {
     const routerInfo = routers.get(item.name)
     if (item.level === 'two') {
-      routersMap.set(item.name, routerInfo!)
-    } else {
       routersMap.get(item.type)?.children?.push(routerInfo!)
+    } else {
+      routersMap.set(item.name, routerInfo!)
     }
   })
   return routersMap

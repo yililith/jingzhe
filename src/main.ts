@@ -16,8 +16,6 @@ import '@arco-design/web-vue/es/modal/style/index.less';
 
 const app = createApp(App)
 
-Message._context = app._context
-
 app.use(pinia)
 app.use(router)
 app.use(Message)
