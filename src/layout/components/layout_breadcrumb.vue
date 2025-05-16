@@ -1,39 +1,35 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import type { RouterModel } from '@/model/model_router.ts'
-import { IconHome } from '@arco-design/web-vue/es/icon'
+import { useRoute } from 'vue-router'
+import type { BreadcrumModel } from '@/model/model_menu.ts'
 const route = useRoute()
 
-const router = useRouter();
-const breadcrumbList = ref([])
+const breadcrumbList = ref<BreadcrumModel[]>([])
 
-const routeJump = (route: string) =>{
-  router.push(route)
-}
-
+// 监控路由变化
 watch(
   () => route.path,
   () => {
-    breadcrumbList.value = route.matched
-      .filter((item) => item.meta && item.meta.title)
-      .map(item => item)
+    route.matched.forEach((item) => {
+      breadcrumbList.value.push({
+        path: item.path,
+        label: item.meta.title as string
+      })
+    })
   },
   { immediate: true },
 )
 </script>
 
 <template>
-  <a-breadcrumb>
-    <a-space direction="vertical">
-      <a-breadcrumb-item>
-        <IconHome />
-      </a-breadcrumb-item>
-      <a-breadcrumb-item v-for="(item, index) in breadcrumbList" :key="index" @click="routeJump(item.path)">
-        {{ item.meta.title }}
-      </a-breadcrumb-item>
-    </a-space>
+  <a-breadcrumb :routes="breadcrumbList">
+    <template #item-render="{ route, paths }">
+      <a-link :href="paths.join('/')">
+        {{ route.label }}
+      </a-link>
+    </template>
   </a-breadcrumb>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>

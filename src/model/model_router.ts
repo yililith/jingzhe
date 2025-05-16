@@ -1,7 +1,7 @@
 import type { Component, VNode  } from 'vue'
 
 
-export interface RouterModel {
+export interface RouterModel{
   path: string
   name: string
   component?: () => Promise<Component>

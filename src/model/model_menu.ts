@@ -13,3 +13,9 @@ export interface acceptMenuModel {
   type: string
   level: string
 }
+
+
+export interface BreadcrumModel {
+  path: string,
+  label: string
+}

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import login_svg from  '@/assets/login_page.svg'
-// 登录表单相关
-import { FormInstance, Message } from '@arco-design/web-vue'
+import { Message } from '@arco-design/web-vue'
 import { ref } from 'vue'
 import { isMobile } from '@/utils'
 
@@ -13,6 +12,7 @@ import { useRouter } from "vue-router";
 import { storeToken } from "@/stores/store_token.ts";
 import type { acceptMenuModel } from '@/model/model_menu.ts'
 import { storeMenu } from '@/stores/store_menu.ts'
+import { loginFormRules } from '@/utils/utils_form_rules.ts'
 
 // 路由控制器
 const router = useRouter()
@@ -23,15 +23,7 @@ const menuStore = storeMenu()
 
 const loginFormRef = ref()
 // 表单规则
-const rules: FormInstance['rules'] = {
-  username: [{ required: true, message: '请输入账号' }],
-  password: [
-    { required: true, message: '请输入密码' },
-    { min: 6, message: '密码最短6位' },
-    { max: 16, message: '密码最长16位' },
-    { match: /^[a-zA-Z0-9.]+$/, message: '输入密码格式不正确' }
-  ]
-}
+const rules = loginFormRules()
 // 表单数据
 const formData = ref({
   username: '',
