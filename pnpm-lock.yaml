@@ -11,6 +11,9 @@ importers:
       '@arco-design/web-vue':
         specifier: ^2.57.0
         version: 2.57.0(vue@3.5.13(typescript@5.8.3))
+      '@arco-themes/vue-chengsezhuti':
+        specifier: ^0.0.22
+        version: 0.0.22(@arco-design/web-vue@2.57.0(vue@3.5.13(typescript@5.8.3)))
       pinia:
         specifier: ^3.0.1
         version: 3.0.2(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))
@@ -101,6 +104,11 @@ packages:
     resolution: {integrity: sha512-R5YReC3C2sG3Jv0+YuR3B7kzkq2KdhhQNCGXD8T11xAoa0zMt6SWTP1xJQOdZcM9du+q3z6tk5mRvh4qkieRJw==}
     peerDependencies:
       vue: ^3.1.0
+
+  '@arco-themes/vue-chengsezhuti@0.0.22':
+    resolution: {integrity: sha512-LGwS7guNdDx9cubahu13uWkl8IoanPeOfQbxr9/7NLY0bbVcJjKaW24UbBrs7+xQQejAKSWDnUmDtBhSz9p9UQ==}
+    peerDependencies:
+      '@arco-design/web-vue': ^2.37.4
 
   '@babel/code-frame@7.27.1':
     resolution: {integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==}
@@ -2377,6 +2385,10 @@ snapshots:
       resize-observer-polyfill: 1.5.1
       scroll-into-view-if-needed: 2.2.31
       vue: 3.5.13(typescript@5.8.3)
+
+  '@arco-themes/vue-chengsezhuti@0.0.22(@arco-design/web-vue@2.57.0(vue@3.5.13(typescript@5.8.3)))':
+    dependencies:
+      '@arco-design/web-vue': 2.57.0(vue@3.5.13(typescript@5.8.3))
 
   '@babel/code-frame@7.27.1':
     dependencies:

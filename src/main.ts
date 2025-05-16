@@ -10,6 +10,8 @@ import '@/conf/conf_router_interception.ts'
 
 import { Message } from '@arco-design/web-vue';
 
+import '@arco-themes/vue-chengsezhuti/index.less'
+
 import '@arco-design/web-vue/es/message/style/index.less';
 import '@arco-design/web-vue/es/notification/style/index.less';
 import '@arco-design/web-vue/es/modal/style/index.less';

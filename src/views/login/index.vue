@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import login_svg from  '@/assets/login_page.svg'
+import login_svg from '@/assets/login_page_logo.svg'
 import { Message } from '@arco-design/web-vue'
 import { ref } from 'vue'
 import { isMobile } from '@/utils'
