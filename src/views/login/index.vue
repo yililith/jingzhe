@@ -62,10 +62,10 @@ const loginBtn = () => {
 
 <template>
   <div class="login">
-    <a-row align="stretch" class="login-box">
+    <a-row align="stretch" class="login-box custom-login">
       <a-col :xs="0" :sm="12" :md="15">
         <div class="login-left">
-          <a-image width="380px" height="380px" fit="contain" :src="login_svg"></a-image>
+          <a-image width="380px" height="380px" fit="contain" :src="login_svg" style="border: none;"></a-image>
         </div>
       </a-col>
       <a-col :xs="24" :sm="12" :md="9">
@@ -116,7 +116,7 @@ const loginBtn = () => {
     max-width: 720px;
     height: 380px;
     display: flex;
-    background-color: rgb(251, 251, 251);
+    // background-color: rgb(251, 251, 251);
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.08);
   }
 }
@@ -135,5 +135,12 @@ const loginBtn = () => {
   align-items: center;
   padding-top: 30px;
   box-sizing: border-box;
+}
+body[arco-theme='dark'] .custom-login {
+  background-color: rgb(35, 35, 36);
+}
+
+body:not([arco-theme='dark']) .custom-login {
+  background-color: rgb(251, 251, 251);
 }
 </style>

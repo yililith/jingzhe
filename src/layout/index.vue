@@ -5,7 +5,7 @@ import Layout_sider from '@/layout/components/layout_sider.vue'
 </script>
 
 <template>
-  <a-layout>
+  <a-layout class="layout">
 <!--    侧边-->
     <a-layout-sider
       class="layout-sider"
@@ -33,7 +33,7 @@ import Layout_sider from '@/layout/components/layout_sider.vue'
 <style scoped>
 .layout-sider {
   height: 100vh;
-  margin-right: 16px;
+  margin-right: 8px;
   font-weight: bold;
 }
 .layout-header {
@@ -43,5 +43,13 @@ import Layout_sider from '@/layout/components/layout_sider.vue'
 }
 .layout-content {
   margin-top: 16px;
+}
+
+body[arco-theme='dark'] .layout-header {
+  background-color: rgb(35, 35, 36);
+}
+
+body:not([arco-theme='dark']) .layout-header {
+  background-color: rgb(251, 251, 251);
 }
 </style>
