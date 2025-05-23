@@ -2,6 +2,7 @@
 
 import Layout_breadcrumb from '@/layout/components/layout_breadcrumb.vue'
 import Layout_sider from '@/layout/components/layout_sider.vue'
+import layout_header from './components/layout_header.vue';
 </script>
 
 <template>
@@ -15,10 +16,15 @@ import Layout_sider from '@/layout/components/layout_sider.vue'
     </a-layout-sider>
     <a-layout>
 <!--      header-->
-      <a-layout-header class="layout-header">
-
-      </a-layout-header>
+      <!-- <a-layout-header class="layout-header">
+        <layout-header></layout-header>
+      </a-layout-header> -->
 <!--      breadcrumb-->
+      <a-layout-header class="layout-header">
+        <layout_header>
+
+        </layout_header>
+      </a-layout-header>
       <layout_breadcrumb>
 
       </layout_breadcrumb>
@@ -39,6 +45,8 @@ import Layout_sider from '@/layout/components/layout_sider.vue'
 .layout-header {
   height: 64px;
   margin-bottom: 16px;
+  box-sizing: border-box;
+  padding: 0;
 }
 .layout-content {
   margin-top: 16px;
