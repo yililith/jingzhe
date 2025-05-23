@@ -35,8 +35,8 @@ watch(isDark, () => {
       T
     </div>
     <div @click="changeIsDark(!isDark)">
-      <icon-moon v-if="isDark" :size="32" />
-      <icon-sun v-else :size="32" />
+      <icon-moon v-if="isDark" :size="24" />
+      <icon-sun v-else :size="24" />
     </div>
   </div>
 </template>
