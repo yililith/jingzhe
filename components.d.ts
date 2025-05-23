@@ -10,12 +10,9 @@ declare module 'vue' {
   export interface GlobalComponents {
     AAvatar: typeof import('@arco-design/web-vue')['Avatar']
     ABreadcrumb: typeof import('@arco-design/web-vue')['Breadcrumb']
-    ABreadcrumbItem: typeof import('@arco-design/web-vue')['BreadcrumbItem']
     AButton: typeof import('@arco-design/web-vue')['Button']
     ACard: typeof import('@arco-design/web-vue')['Card']
     ACol: typeof import('@arco-design/web-vue')['Col']
-    AConfigProvider: typeof import('@arco-design/web-vue')['ConfigProvider']
-    ADivider: typeof import('@arco-design/web-vue')['Divider']
     AForm: typeof import('@arco-design/web-vue')['Form']
     AFormItem: typeof import('@arco-design/web-vue')['FormItem']
     AImage: typeof import('@arco-design/web-vue')['Image']
@@ -29,9 +26,8 @@ declare module 'vue' {
     AMenu: typeof import('@arco-design/web-vue')['Menu']
     AMenuItem: typeof import('@arco-design/web-vue')['MenuItem']
     ARow: typeof import('@arco-design/web-vue')['Row']
-    ASpace: typeof import('@arco-design/web-vue')['Space']
     ASubMenu: typeof import('@arco-design/web-vue')['SubMenu']
-    ATag: typeof import('@arco-design/web-vue')['Tag']
+    CardContent: typeof import('./src/components/CardContent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

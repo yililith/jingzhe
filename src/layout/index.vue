@@ -33,12 +33,11 @@ import Layout_sider from '@/layout/components/layout_sider.vue'
 <style scoped>
 .layout-sider {
   height: 100vh;
-  margin-right: 8px;
+  margin-right: 6px;
   font-weight: bold;
 }
 .layout-header {
   height: 64px;
-  border-bottom: rgb(229, 230, 235) 1px solid;
   margin-bottom: 16px;
 }
 .layout-content {
@@ -50,6 +49,7 @@ body[arco-theme='dark'] .layout-header {
 }
 
 body:not([arco-theme='dark']) .layout-header {
-  background-color: rgb(251, 251, 251);
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 1px 2px 1px rgba(0, 0, 0, 0.08)
 }
 </style>

@@ -7,11 +7,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <a-config-provider :theme="{ theme: 'dark' }">
+  <div class="body-app">
     <RouterView />
-  </a-config-provider>
+  </div>
 </template>
 
 <style scoped>
-
+body[arco-theme='dark'] .body-app {
+  background-color: rgb(45, 45, 45);
+  color: rgb(189, 189, 190);
+}
+body:not([arco-theme='dark']) .body-app {
+  background-color: rgb(245, 245, 245);
+}
 </style>

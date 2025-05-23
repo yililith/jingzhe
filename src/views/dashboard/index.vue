@@ -3,7 +3,9 @@
 </script>
 
 <template>
- <h1>Hello World</h1>
+    <CardContent>
+        <div>Hello world</div>
+    </CardContent>
 </template>
 
 <style scoped>
