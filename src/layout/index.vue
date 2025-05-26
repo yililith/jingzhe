@@ -15,11 +15,6 @@ import layout_header from './components/layout_header.vue';
       <layout_sider></layout_sider>
     </a-layout-sider>
     <a-layout>
-<!--      header-->
-      <!-- <a-layout-header class="layout-header">
-        <layout-header></layout-header>
-      </a-layout-header> -->
-<!--      breadcrumb-->
       <a-layout-header class="layout-header">
         <layout_header>
 
