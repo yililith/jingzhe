@@ -15,6 +15,7 @@
   "dependencies": {
     "@arco-design/web-vue": "^2.57.0",
     "@arco-themes/vue-chengsezhuti": "^0.0.22",
+    "axios": "^1.9.0",
     "pinia": "^3.0.1",
     "pinia-plugin-persistedstate": "^4.2.0",
     "unplugin-vue-components": "^28.5.0",
