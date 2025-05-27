@@ -2,7 +2,7 @@
 import Logo from '@/assets/logo.svg'
 import { storeMenu } from '@/stores/store_menu'
 import { setMenus } from '@/utils'
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 
 const router = useRouter()
 // 菜单生成

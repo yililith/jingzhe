@@ -11,6 +11,7 @@ import layout_header from './components/layout_header.vue';
     <a-layout-sider
       class="layout-sider"
       :breakpoint="'sm'"
+      collapsible
     >
       <layout_sider></layout_sider>
     </a-layout-sider>
