@@ -30,9 +30,13 @@ declare module 'vue' {
     AMenuItem: typeof import('@arco-design/web-vue')['MenuItem']
     ARow: typeof import('@arco-design/web-vue')['Row']
     ASpace: typeof import('@arco-design/web-vue')['Space']
+    AStatistic: typeof import('@arco-design/web-vue')['Statistic']
     ASubMenu: typeof import('@arco-design/web-vue')['SubMenu']
+    ATag: typeof import('@arco-design/web-vue')['Tag']
+    Card_content: typeof import('./src/components/card_content.vue')['default']
     CardContent: typeof import('./src/components/CardContent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    View_echarts: typeof import('./src/components/view_echarts.vue')['default']
   }
 }
