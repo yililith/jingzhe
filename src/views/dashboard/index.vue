@@ -45,22 +45,22 @@ import {
             </a-card>
         </a-col>
         <a-col :xs="24" :sm="12">
-            <a-card>
+            <a-card class="jz-dashboard-card">
                 用户分类
             </a-card>
         </a-col>
         <a-col :xs="24" :sm="12">
-            <a-card>
+            <a-card class="jz-dashboard-card">
                 订单分类
             </a-card>
         </a-col>
         <a-col :xs="24" :sm="12">
-            <a-card>
+            <a-card class="jz-dashboard-card">
                 用户增长曲线
             </a-card>
         </a-col>
         <a-col :xs="24" :sm="12">
-            <a-card>
+            <a-card class="jz-dashboard-card">
                 订单增长曲线
             </a-card>
         </a-col>
@@ -68,5 +68,8 @@ import {
 </template>
 
 <style lang="scss" scoped>
-
+.jz-dashboard-card {
+    width: 100%;
+    height: 400px;
+}
 </style>

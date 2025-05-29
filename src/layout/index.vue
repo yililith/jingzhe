@@ -1,8 +1,9 @@
 <script setup lang="ts">
 
-import Layout_breadcrumb from '@/layout/components/layout_breadcrumb.vue'
-import Layout_sider from '@/layout/components/layout_sider.vue'
+import layout_breadcrumb from '@/layout/components/layout_breadcrumb.vue'
+import layout_sider from '@/layout/components/layout_sider.vue'
 import layout_header from './components/layout_header.vue';
+import layout_content from './components/layout_content.vue';
 </script>
 
 <template>
@@ -13,26 +14,31 @@ import layout_header from './components/layout_header.vue';
       :breakpoint="'sm'"
       collapsible
     >
-      <layout_sider></layout_sider>
+      <!-- 侧边栏 -->
+      <layout_sider />
     </a-layout-sider>
-    <a-layout>
+    <a-layout class="layout-right">
+      <!-- 顶部栏 -->
       <a-layout-header class="layout-header">
-        <layout_header>
-
-        </layout_header>
+        <layout_header />
       </a-layout-header>
-      <layout_breadcrumb>
-
-      </layout_breadcrumb>
-<!--      content-->
+      <!-- 面包屑 -->
+      <layout_breadcrumb />
+      <!-- 内容区 -->
       <a-layout-content class="layout-content">
-        <RouterView />
+        <layout_content>
+          <RouterView />
+        </layout_content>
       </a-layout-content>
     </a-layout>
   </a-layout>
 </template>
 
 <style scoped>
+.layout {
+  height: 100vh;
+  overflow: hidden;
+}
 .layout-sider {
   height: 100vh;
   margin-right: 6px;
@@ -46,10 +52,12 @@ import layout_header from './components/layout_header.vue';
 }
 .layout-content {
   margin-top: 16px;
+  padding: 0 8px 0 0;
+  height: calc(100vh - 120px);
 }
-
 body[arco-theme='dark'] .layout-header {
   background-color: rgb(35, 35, 36);
+  box-shadow: 2px 1px 2px 1px rgba(255, 255, 255, 0.08)
 }
 
 body:not([arco-theme='dark']) .layout-header {

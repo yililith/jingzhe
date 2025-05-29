@@ -10,8 +10,12 @@
 </template>
 <style scoped lang='scss'>
 .comp-content {
-    width: 99.5%;
-    height: 99%;
+    height: 100%;
+    width: 100%;
     border-radius: 10px;
+}
+
+.comp-content::-webkit-scrollbar {
+    display: none;
 }
 </style>

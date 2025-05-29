@@ -70,6 +70,7 @@ const loginBtn = () => {
       </a-col>
       <a-col :xs="24" :sm="12" :md="9">
         <div class="login-right">
+          <span class="login-right-font">Login</span>
           <a-form
             ref="loginFormRef"
             :size="isMobile() ? 'large' : 'medium'"
@@ -129,12 +130,20 @@ const loginBtn = () => {
 }
 .login-right {
   display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
   justify-content: center;
   align-items: center;
   padding-top: 30px;
   box-sizing: border-box;
+}
+
+.login-right-font {
+  font-size: 35px;
+  margin-bottom: 16px;
+  font-weight: bold;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 body[arco-theme='dark'] .custom-login {
   background-color: rgb(35, 35, 36);
