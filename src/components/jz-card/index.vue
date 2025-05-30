@@ -10,7 +10,7 @@
 </template>
 <style scoped lang='scss'>
 .comp-content {
-  height: 100%;
+  height: 99.5%;
   width: 100%;
   border-radius: 10px;
 }

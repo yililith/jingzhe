@@ -37,6 +37,7 @@ declare module 'vue' {
     CardContent: typeof import('./src/components/CardContent.vue')['default']
     Jz_content_card: typeof import('./src/components/jz_content_card.vue')['default']
     Jz_echarts: typeof import('./src/components/jz_echarts.vue')['default']
+    JzCard: typeof import('./src/components/jz-card/index.vue')['default']
     JzCardContent: typeof import('./src/components/jz-card-content/index.vue')['default']
     JzChart: typeof import('./src/components/jz-chart/index.vue')['default']
     JzContent: typeof import('./src/components/jz-content/index.vue')['default']
