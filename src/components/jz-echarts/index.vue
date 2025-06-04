@@ -3,65 +3,84 @@ import * as echarts from 'echarts'
 import { onMounted, onUnmounted, ref, watch } from 'vue'
 
 const props = defineProps({
-    chartStyle: {
-        type: Object,
-        default: () => ({
-            width: '600px',
-            height: '400px'
-        })
-    },
-    chartOption: {
-        type: Object,
-        required: true,
-        default: () => ({})
-    }
+  chartOption: {
+    type: Object,
+    required: true,
+    default: () => ({}),
+  },
 })
 
 const chartRef = ref(null)
 let echartInstance = null
+let resizeObserver = null
 
-const resizeHandler = () => {
-    if (echartInstance) {
-        echartInstance.resize({
-            animation: { duration: 300 }
-        })
-    }
+// 防抖优化
+const debounceResize = (fn, delay = 100) => {
+  let timer = null
+  return () => {
+    if (timer) clearTimeout(timer)
+    timer = setTimeout(fn, delay)
+  }
 }
 
-const drawChart = () => {
-    if (!chartRef.value) return
+const resizeHandler = debounceResize(() => {
+  if (echartInstance) {
+    echartInstance.resize({ animation: { duration: 300 } })
+  }
+})
 
-    if (!echartInstance) {
-        echartInstance = echarts.init(chartRef.value)
-    }
-    echartInstance.setOption(props.chartOption, {
-        notMerge: true
-    })
+const initChart = () => {
+  if (!chartRef.value) return
+
+  // 确保容器有实际尺寸（避免 SSR/初始化时宽度为 0）
+  if (chartRef.value.clientWidth === 0 || chartRef.value.clientHeight === 0) {
+    setTimeout(initChart, 50)
+    return
+  }
+
+  if (!echartInstance) {
+    echartInstance = echarts.init(chartRef.value)
+  }
+  updateChart()
+}
+
+const updateChart = () => {
+  if (echartInstance) {
+    echartInstance.setOption(props.chartOption, { notMerge: true })
+  }
 }
 
 onMounted(() => {
-    drawChart()
+  initChart()
+
+  // 优先使用 ResizeObserver 监听容器变化
+  if (typeof ResizeObserver !== 'undefined') {
+    resizeObserver = new ResizeObserver(resizeHandler)
+    resizeObserver.observe(chartRef.value)
+  } else {
+    // 回退方案：监听窗口变化
     window.addEventListener('resize', resizeHandler)
+  }
 })
 
-// 清除事件监听和图表实例
 onUnmounted(() => {
-    window.removeEventListener('resize', resizeHandler)
-    if (echartInstance) {
-        echartInstance.dispose()
-        echartInstance = null
-    }
+  if (resizeObserver) resizeObserver.disconnect()
+  window.removeEventListener('resize', resizeHandler)
+  if (echartInstance) echartInstance.dispose()
 })
 
-// 监听配置变化，动态更新图表
-watch(() => props.chartOption, () => {
-    drawChart()
-}, { deep: true })
+// 监听数据变化
+watch(() => props.chartOption, updateChart, { deep: true })
 </script>
 
 <template>
-    <div :style="chartStyle" ref="chartRef"></div>
+  <div ref="chartRef" class="jz-echarts-container" />
 </template>
 
-<style scoped lang='scss'>
+<style scoped>
+.jz-echarts-container {
+  width: 100%;
+  height: 100%;
+  min-height: 350px; /* 防止初始化高度为 0 */
+}
 </style>
