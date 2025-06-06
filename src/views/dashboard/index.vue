@@ -2,7 +2,7 @@
 import {
   IconArrowRise
 } from '@arco-design/web-vue/es/icon'
-import JzEcharts from '@/components/jz-echarts/index.vue';
+// import JzEcharts from '@/components/jz-echarts/index.vue';
 import { ref } from 'vue'
 
 const pieOption = ref<Object>({
