@@ -1,7 +1,12 @@
 
 
-
-
+/**
+ * 折线图
+ * @param xData 
+ * @param yData 
+ * @param smooth 
+ * @returns Object
+ */
 export const lineOptionObject = (xData: string[], yData: number[], smooth?: boolean): Object => {
     return {
         xAxis: {

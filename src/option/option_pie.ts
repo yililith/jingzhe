@@ -1,11 +1,13 @@
 import type { pieNDModel } from "@/model/model_option"
 
 
-// 南丁格尔饼图
-// @Param data: pieNDModel[]  数据 - 必传
-// @Param radius: number[]   内外圈大小 - 选传
-// @Param top: string   图例显示位置 - 选传
-// @return Object
+/**
+ * 南丁格尔饼图
+ * @param data 
+ * @param radius 
+ * @param top 
+ * @returns Object
+ */
 export const pieNDOptionObject = (data: pieNDModel[], radius?: number[], top?: string): Object => {
     return {
         legend: {
