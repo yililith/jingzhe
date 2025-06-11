@@ -11,7 +11,7 @@ const menuStore = storeMenu()
 const menuNameList = setMenus(menuStore.menuList)
 
 // 路由跳转
-const routeJump = (route: string) =>{
+const routeJump = (route: string) =>{  
   router.push(route)
 }
 
@@ -30,7 +30,7 @@ const routeJump = (route: string) =>{
         <a-sub-menu v-if="item.children">
           <template #icon><component :is="item.icon"></component></template>
           <template #title>{{ item.name }}</template>
-          <a-menu-item v-for="child in item.children" :key="child.name" @click="routeJump(item.path)">
+          <a-menu-item v-for="child in item.children" :key="child.name" @click="routeJump(child.path)">
             {{ child.name }}
           </a-menu-item>
         </a-sub-menu>

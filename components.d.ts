@@ -8,6 +8,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AAtg: typeof import('@arco-design/web-vue')['Atg']
     AAvatar: typeof import('@arco-design/web-vue')['Avatar']
     ABreadcrumb: typeof import('@arco-design/web-vue')['Breadcrumb']
     AButton: typeof import('@arco-design/web-vue')['Button']
@@ -31,6 +32,7 @@ declare module 'vue' {
     ASpace: typeof import('@arco-design/web-vue')['Space']
     AStatistic: typeof import('@arco-design/web-vue')['Statistic']
     ASubMenu: typeof import('@arco-design/web-vue')['SubMenu']
+    ATag: typeof import('@arco-design/web-vue')['Tag']
     JzCard: typeof import('./src/components/jz-card/index.vue')['default']
     JzEcharts: typeof import('./src/components/jz-echarts/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

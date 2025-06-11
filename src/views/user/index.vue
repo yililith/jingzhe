@@ -1,8 +1,10 @@
 <script setup>
-import JzCard from '@/components/jz-card/index.vue'
+import jzCard from '@/components/jz-card/index.vue'
 </script>
 <template>
-    <jz-card></jz-card>
+    <jzCard>
+        Hello world
+    </jzCard>
 </template>
 <style scoped lang='scss'>
 </style>

@@ -2,7 +2,7 @@ import type { Component, VNode  } from 'vue'
 
 
 export interface RouterModel{
-  path: string
+  path?: string
   name: string
   component?: () => Promise<Component>
   meta: {

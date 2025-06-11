@@ -1,5 +1,4 @@
 <script setup>
-import JzCard from '@/components/jz-card/index.vue'
 </script>
 <template>
     <jz-card>

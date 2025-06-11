@@ -41,6 +41,16 @@ const loginBtn = () => {
           name: 'dashboard',
           level: 'one',
           type: 'dashboard',
+        },
+        {
+          name: 'user',
+          level: 'one',
+          type: 'user',
+        },
+        {
+          name: 'userTable',
+          level: 'two',
+          type: 'user',
         }
       ]
 

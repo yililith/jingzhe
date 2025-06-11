@@ -51,8 +51,7 @@ import layout_content from './components/layout_content.vue';
   padding: 0;
 }
 .layout-content {
-  margin-top: 16px;
-  padding: 0 6px 0 0;
+  margin: 16px 6px 0 0;
   height: calc(100vh - 120px);
 }
 body[arco-theme='dark'] .layout-header {
