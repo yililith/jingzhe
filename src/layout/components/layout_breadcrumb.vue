@@ -30,9 +30,11 @@ watch(
 /**
  * 初始化面包屑标签
  */
+
 onMounted(() => {
   breadcrumbList.value = [{path: '/dashboard', label: '主页'}]
 })
+
 /**
  * 提出被删除的breadcrumb
  * @param bread string
