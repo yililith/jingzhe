@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Logo from '@/assets/logo.svg'
 import { storeMenu } from '@/stores/store_menu'
-import { setMenus } from '@/utils'
+import { setMenus } from '@/utils/utils_menus'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()

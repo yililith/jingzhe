@@ -2,7 +2,7 @@
 import login_svg from '@/assets/login_page_logo.svg'
 import { Message } from '@arco-design/web-vue'
 import { ref } from 'vue'
-import { isMobile } from '@/utils'
+import { isMobile } from '@/utils/utils_menus'
 
 import {
   IconUser,

@@ -24,13 +24,13 @@ export const setMenus = (menus: acceptMenuModel[]): MenuModel[] => {
         }
         // 将二级菜单添加到父级的children中
         parentMenu.children.push({
-          path: routerInfo!.path,
+          path: routerInfo!.path!,
           name: routerInfo!.meta.title
         });
       }
     } else {
       menusMap.set(item.name, {
-        path: routerInfo!.path,
+        path: routerInfo!.path!,
         name: routerInfo!.meta.title,
         icon: routerInfo!.meta.icon,
       })
