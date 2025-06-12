@@ -3,7 +3,6 @@ import Logo from '@/assets/logo.svg'
 import type { MenuModel } from '@/model/model_menu'
 import { storeMenu } from '@/stores/store_menu'
 import { setMenus } from '@/utils/utils_menus'
-import { log } from 'echarts/types/src/util/log.js'
 import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
