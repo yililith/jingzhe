@@ -2,7 +2,7 @@
 </script>
 <template>
     <jz-card>
-        
+        <h1>菜单列表</h1>
     </jz-card>
 </template>
 <style scoped lang='scss'>

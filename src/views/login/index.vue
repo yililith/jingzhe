@@ -51,7 +51,22 @@ const loginBtn = () => {
           name: 'userTable',
           level: 'two',
           type: 'user',
-        }
+        },
+        {
+          name: 'settings',
+          level: 'one',
+          type: 'settings'
+        },
+        {
+          name: 'menus',
+          level: 'two',
+          type: 'settings'
+        },
+        {
+          name: 'apis',
+          level: 'two',
+          type: 'settings'
+        },
       ]
 
       menuStore.addMenu(menus)

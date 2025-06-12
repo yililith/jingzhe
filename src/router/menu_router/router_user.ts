@@ -24,7 +24,7 @@ userMap.set('user', {
 userMap.set('userTable', {
     path: '/user/table',
     name: 'userTable',
-    component: () => import('@/views/user/index.vue'),
+    component: () => import('@/views/user/userTable.vue'),
     meta: {
         title: '用户列表',
         type: 'user',

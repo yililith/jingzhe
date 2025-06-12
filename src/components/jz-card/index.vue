@@ -10,8 +10,8 @@
 </template>
 <style scoped lang='scss'>
 .comp-content {
-  height: 99.5%;
-  width: 100%;
+  height: calc(100% - 10px);
+  width: calc(100% - 6px);
   border-radius: 10px;
 }
 
