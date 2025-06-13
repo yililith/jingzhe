@@ -16,7 +16,7 @@ const routeJump = (r: string) =>{
  */
 watch(
   () => route.path,
-  () => {
+  () => {    
     route.matched.filter(item => item.children.length === 0).filter(item => item.meta.title).filter(item => !breadcrumbList.value.find(breadcrumb => breadcrumb.label === item.meta.title)).forEach((item) => {
       breadcrumbList.value.push({
         path: item.path,
@@ -39,14 +39,15 @@ onMounted(() => {
  * 提出被删除的breadcrumb
  * @param bread string
  */
-const removeBreadcrumb = (breadcrumb: string) => {
-  breadcrumbList.value = breadcrumbList.value.filter(item => item.label !== breadcrumb)
+const removeBreadcrumb = (label: string) => {
+  breadcrumbList.value = breadcrumbList.value.filter(item => item.label !== label)
+  
 }
 </script>
 
 <template>
   <a-space align="baseline" size="mini">
-    <template v-for="({ path, label }, index) of breadcrumbList" :key="index">
+    <template v-for="({ path, label }, index) of breadcrumbList" :key="label">
       <a-tag color="rgb(255, 144, 71)" :closable="index !== 0" checkable :checked="true" @check="routeJump(path)" @close="removeBreadcrumb(label)">{{ label }}</a-tag>
     </template>
   </a-space>

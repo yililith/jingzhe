@@ -52,7 +52,7 @@ watch(
       </a-avatar>
     </div>
     <!--  菜单组件  -->
-    <a-menu :accordion="true" v-model:selected-keys="selectKeys" v-model:open-keys="openKeys" :default-selected-keys="['主页']">
+    <a-menu :accordion="true" v-model:selected-keys="selectKeys" v-model:open-keys="openKeys">
       <template v-for="item in menuNameList" :key="item.name">
         <a-sub-menu v-if="item.children" :key="item.name">
           <template #icon><component :is="item.icon"></component></template>
