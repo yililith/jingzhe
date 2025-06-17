@@ -1,6 +1,6 @@
 import { browse } from 'xe-utils'
 
-import type { acceptMenuModel, MenuModel } from '@/model/model_menu.ts'
+import type { menuListModel, MenuModel } from '@/model/model_menu.ts'
 import routerMap from '@/router/router'
 
 
@@ -9,13 +9,13 @@ export const isMobile = (): boolean => {
 }
 
 // 把后端传来的菜单权限数据转为前端需要的菜单数据
-export const setMenus = (menus: acceptMenuModel[]): MenuModel[] => {
+export const setMenus = (menus: menuListModel[]): MenuModel[] => {
   const routers = routerMap
   const menusMap: Map<string, MenuModel> = new Map()
   // 后端数据转为前端数据
-  menus.forEach((item: acceptMenuModel) => {
+  menus.forEach((item: menuListModel) => {
     const routerInfo = routers.get(item.name)
-    if (item.level === 'two') {
+    if (item.level === 2) {
       const parentMenu = menusMap.get(item.type);
       if (parentMenu) {
         // 如果父级菜单没有children属性，就初始化一个空数组

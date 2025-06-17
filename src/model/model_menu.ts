@@ -8,10 +8,10 @@ export interface MenuModel {
   children?: MenuModel[]
 }
 
-export interface AcceptMenuModel {
+export interface menuListModel {
   name: string
   type: string
-  level: string
+  level: 1 | 2
 }
 
 

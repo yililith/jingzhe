@@ -2,7 +2,7 @@ import router from '@/router'
 import { storeToken } from '@/stores/store_token.ts'
 import { storeRouter } from '@/stores/store_router.ts'
 import { storeMenu } from '@/stores/store_menu.ts'
-import type { acceptMenuModel } from '@/model/model_menu.ts'
+import type { menuListModel } from '@/model/model_menu.ts'
 import routerMap from '@/router/router.ts'
 import type { RouterModel } from '@/model/model_router.ts'
 import { type RouteRecordRaw, useRouter } from 'vue-router'
@@ -43,13 +43,13 @@ router.beforeEach((to, from, next) => {
   }
 })
 // 菜单权限转路由
-const menuToRouter = (menus: acceptMenuModel[]): Map<string, RouterModel> => {
+const menuToRouter = (menus: menuListModel[]): Map<string, RouterModel> => {
   const routers = routerMap
   const routersMap: Map<string, RouterModel> = new Map()
   // 后端数据转为前端数据
-  menus.forEach((item: acceptMenuModel) => {
+  menus.forEach((item: menuListModel) => {
     const routerInfo = routers.get(item.name)
-    if (item.level === 'two') {
+    if (item.level === 2) {
       routersMap.get(item.type)?.children?.push(routerInfo!)
     } else {
       routersMap.set(item.name, routerInfo!)

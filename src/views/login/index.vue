@@ -10,9 +10,11 @@ import {
 } from '@arco-design/web-vue/es/icon'
 import { useRouter } from "vue-router";
 import { storeToken } from "@/stores/store_token.ts";
-import type { acceptMenuModel } from '@/model/model_menu.ts'
+import type { menuListModel } from '@/model/model_menu.ts'
 import { storeMenu } from '@/stores/store_menu.ts'
 import { loginFormRules } from '@/utils/utils_form_rules.ts'
+import { api_login } from '@/api/api_user'
+import { api_get_user_menu } from '@/api/api_menu'
 
 // 路由控制器
 const router = useRouter()
@@ -32,39 +34,51 @@ const formData = ref({
 
 // 登录事件
 const loginBtn = () => {
-  loginFormRef.value.validate().then(() => {
-    if ( formData.value.username === 'admin' && formData.value.password === '123456' ) {
-      // 此处可修改为真正的登录组件
-      tokenStore.setToken('test token')
-      const menus: acceptMenuModel[] = [
+  loginFormRef.value.validate().then(async () => {
+    if ( formData.value.username !== '' && formData.value.password !== '' ) {
+      
+      const login_data = await api_login(formData.value.username, formData.value.password)
+
+      const menus = await api_get_user_menu(login_data.data.uid)
+      
+      tokenStore.setToken(login_data.data.token)
+
+      tokenStore.setUserInfo({
+        uid: login_data.uid,
+        nickname: login_data.nickname,
+        image: login_data.image,
+      })
+
+
+      const menus: menuListModel[] = [
         {
           name: 'dashboard',
-          level: 'one',
+          level: 1,
           type: 'dashboard',
         },
         {
           name: 'user',
-          level: 'one',
+          level: 1,
           type: 'user',
         },
         {
           name: 'userTable',
-          level: 'two',
+          level: 2,
           type: 'user',
         },
         {
           name: 'settings',
-          level: 'one',
+          level: 1,
           type: 'settings'
         },
         {
           name: 'menus',
-          level: 'two',
+          level: 2,
           type: 'settings'
         },
         {
           name: 'apis',
-          level: 'two',
+          level: 2,
           type: 'settings'
         },
       ]

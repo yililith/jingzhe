@@ -1,7 +1,9 @@
-import type { ResModel } from "@/model/model_requests";
 import { storeToken } from "@/stores/store_token";
 import axios, { type AxiosResponse } from "axios";
 import { Message } from '@arco-design/web-vue'
+import router from "@/router";
+import { storeMenu } from "@/stores/store_menu";
+import type { ResModel } from "@/model/model_requests";
 
 const baseURL = import.meta.env.VITE_APP_API_URL
 
@@ -22,23 +24,32 @@ req.interceptors.request.use(
 )
 
 req.interceptors.response.use(
-    (res: AxiosResponse<ResModel<any>>) => {
-        const { code, data, message } = res.data
+    (res: AxiosResponse<ResModel>) => {
+        const { code, data, message } = res.data;
+        
         switch (code) {
             case 200:
                 return data
-            case 403:
-                Message.warning('Forbidden')
+            case 400:
+                Message.error(message || 'Bad request')
+                return Promise.reject(data)
+            case 401:
+                Message.error(message || 'Token expired, please login again')
+                const tokenStore = storeToken()
+                const menuStore = storeMenu()
+                tokenStore.removeToken()
+                tokenStore.removeUserInfo()
+                menuStore.removeMenu()
+                router.push('/login')
                 break
             case 404:
-                Message.error('404 Not Found')
-                break
+                Message.error(message || 'Resource not found')
+                return Promise.reject(data)
             case 500:
-                Message.error('Internal Server Error')
-                break
+                Message.error(message || 'Internal server error')
+                return Promise.reject(data)
             default:
-                Message.warning(message)
-                break
+                return Promise.reject(data)
         }
     },
     (err) => {
