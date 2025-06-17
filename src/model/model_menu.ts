@@ -8,7 +8,7 @@ export interface MenuModel {
   children?: MenuModel[]
 }
 
-export interface acceptMenuModel {
+export interface AcceptMenuModel {
   name: string
   type: string
   level: string

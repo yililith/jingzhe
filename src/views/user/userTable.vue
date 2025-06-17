@@ -1,9 +1,15 @@
 <script setup>
 import jzCard from '@/components/jz-card/index.vue'
+
+
+
+
 </script>
 <template>
     <jzCard>
-        Hello world
+        <a-table :columns="columns">
+
+        </a-table>
     </jzCard>
 </template>
 <style scoped lang='scss'>
