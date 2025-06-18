@@ -57,7 +57,8 @@ const logOut = () => {
       </div>
       <div>
         <a-dropdown>
-          <a-avatar shape="square">U</a-avatar>
+          <a-avatar shape="square" v-if="tokenStore.userInfo.image"><img :src="tokenStore.userInfo.image" alt="avatar"></a-avatar>
+          <a-avatar shape="square" v-else >U</a-avatar>
           <template #content>
             <a-doption @click="logOut">
               <template #icon>

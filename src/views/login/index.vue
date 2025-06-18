@@ -15,6 +15,7 @@ import { storeMenu } from '@/stores/store_menu.ts'
 import { loginFormRules } from '@/utils/utils_form_rules.ts'
 import { api_login } from '@/api/api_user'
 import { api_get_user_menu } from '@/api/api_menu'
+import type { loginModel } from '@/model/model_user'
 
 // 路由控制器
 const router = useRouter()
@@ -35,60 +36,22 @@ const formData = ref({
 // 登录事件
 const loginBtn = () => {
   loginFormRef.value.validate().then(async () => {
-    if ( formData.value.username !== '' && formData.value.password !== '' ) {
-      
-      const login_data = await api_login(formData.value.username, formData.value.password)
-
-      const menus = await api_get_user_menu(login_data.data.uid)
-      
-      tokenStore.setToken(login_data.data.token)
-
-      tokenStore.setUserInfo({
-        uid: login_data.uid,
-        nickname: login_data.nickname,
-        image: login_data.image,
+    await api_login(formData.value.username, formData.value.password).then(async (data: loginModel) => {
+      tokenStore.setToken(data.token!)
+      await api_get_user_menu(data.uid).then((menus: menuListModel[]) => {
+        menuStore.addMenu(menus)
+        tokenStore.setUserInfo({
+          uid: data.uid,
+          nickname: data.nickname,
+          image: data.image,
+        })
+        router.push('/')
+      }).catch((error) => {
+        Message.error(error.message || '获取菜单失败')
       })
-
-
-      const menus: menuListModel[] = [
-        {
-          name: 'dashboard',
-          level: 1,
-          type: 'dashboard',
-        },
-        {
-          name: 'user',
-          level: 1,
-          type: 'user',
-        },
-        {
-          name: 'userTable',
-          level: 2,
-          type: 'user',
-        },
-        {
-          name: 'settings',
-          level: 1,
-          type: 'settings'
-        },
-        {
-          name: 'menus',
-          level: 2,
-          type: 'settings'
-        },
-        {
-          name: 'apis',
-          level: 2,
-          type: 'settings'
-        },
-      ]
-
-      menuStore.addMenu(menus)
-      Message.success('登录成功')
-      router.push('/')
-    } else {
-      Message.error('登录失败')
-    }
+    }).catch((error) => {
+      Message.error(error.message || '登录失败')
+    })
   }).finally(() => {
     formData.value = {
       username: '',

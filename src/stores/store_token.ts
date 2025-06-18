@@ -1,4 +1,4 @@
-import type { modelLogin } from '@/model/model_user'
+import type { loginModel } from '@/model/model_user'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
@@ -6,7 +6,7 @@ import { ref } from 'vue'
 export const storeToken = defineStore("token", () => {
   const token = ref<string>('')
 
-  const userInfo = ref<modelLogin>({
+  const userInfo = ref<loginModel>({
     image: '',
     nickname: '',
     uid: ''
@@ -16,7 +16,7 @@ export const storeToken = defineStore("token", () => {
     token.value = value
   }
 
-  const setUserInfo = (value: modelLogin) => {
+  const setUserInfo = (value: loginModel) => {
     userInfo.value = value
   }
   

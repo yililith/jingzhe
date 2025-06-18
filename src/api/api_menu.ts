@@ -1,3 +1,4 @@
+import type { menuListModel } from "@/model/model_menu";
 import req from "@/utils/utils_requests";
 
 
@@ -6,5 +7,5 @@ export const api_get_user_menu = (uid: string) => {
         params: {
             uid
         }
-    });
+    }) as unknown as Promise<menuListModel[]>;
 }

@@ -1,4 +1,4 @@
-export interface modelLogin {
+export interface loginModel {
     image: string
     nickname: string
     token?: string

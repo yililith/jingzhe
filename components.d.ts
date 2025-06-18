@@ -29,6 +29,7 @@ declare module 'vue' {
     ASpace: typeof import('@arco-design/web-vue')['Space']
     AStatistic: typeof import('@arco-design/web-vue')['Statistic']
     ASubMenu: typeof import('@arco-design/web-vue')['SubMenu']
+    ATable: typeof import('@arco-design/web-vue')['Table']
     ATag: typeof import('@arco-design/web-vue')['Tag']
     JzCard: typeof import('./src/components/jz-card/index.vue')['default']
     JzEcharts: typeof import('./src/components/jz-echarts/index.vue')['default']

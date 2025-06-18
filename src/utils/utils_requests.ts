@@ -41,7 +41,7 @@ req.interceptors.response.use(
                 tokenStore.removeUserInfo()
                 menuStore.removeMenu()
                 router.push('/login')
-                break
+                return Promise.reject(data)
             case 404:
                 Message.error(message || 'Resource not found')
                 return Promise.reject(data)
