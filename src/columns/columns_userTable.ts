@@ -2,12 +2,15 @@ import type { columnsModel } from "@/model/model_columns"
 
 
 
-
+/**
+ * 用户表格列配置
+ * @returns  {columnsModel[]}
+ */
 export const userTableColumns = (): columnsModel[] => {
     return [
         {
-            title: 'ID',
-            dataIndex: 'id',
+            title: 'index',
+            dataIndex: 'index',
             fixed: 'left'
         },
         {
@@ -19,13 +22,17 @@ export const userTableColumns = (): columnsModel[] => {
             dataIndex: 'nickname'
         },
         {
-            title: '创建时间',
-            dataIndex: 'createTime'
+            title: '头像',
+            dataIndex: 'image_url',
+        },
+        {
+            title: '状态',
+            dataIndex: 'status'
         },
         {
             title: '操作',
             dataIndex: 'action',
-            fixed: 'right'
+            fixed: 'center',
         }
     ]
 }

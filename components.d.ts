@@ -30,6 +30,7 @@ declare module 'vue' {
     AStatistic: typeof import('@arco-design/web-vue')['Statistic']
     ASubMenu: typeof import('@arco-design/web-vue')['SubMenu']
     ATable: typeof import('@arco-design/web-vue')['Table']
+    ATableColumn: typeof import('@arco-design/web-vue')['TableColumn']
     ATag: typeof import('@arco-design/web-vue')['Tag']
     JzCard: typeof import('./src/components/jz-card/index.vue')['default']
     JzEcharts: typeof import('./src/components/jz-echarts/index.vue')['default']
