@@ -32,7 +32,7 @@ const getUserList = async (current, pageSize) => {
     ).then(res => {
         res.list.forEach((item, index) => {
             result.push({
-                index: index,
+                index: '#' + (index + 1),
                 username: item.username,
                 nickname: item.nickname,
                 image_url: item.image_url,
@@ -73,13 +73,6 @@ onMounted(() => {
             @page-change="handlePageChange"
             @page-size-change="handlePageSizeChange"
         >
-        <template #columns>
-            <a-table-column title="头像">
-                <template #cell="{ record }">
-                    <img :src="record.image_url" style="width: 40px; height: 40px; border-radius: 50%;" />
-                </template>
-            </a-table-column>
-        </template>
         </a-table>
     </jzCard>
 </template>
